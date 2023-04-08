@@ -16,8 +16,7 @@ from PIL import Image
 list_of_files = {}
 for dirpath, dirnames, filenames in os.walk("quadrants"):
     for filename in filenames:
-        if filename.endswith(".png"):
-            list_of_files[filename] = os.sep.join([dirpath, filename])
+        list_of_files[filename] = os.sep.join([dirpath, filename])
 
 # only select 4 of them:
 imagePaths = []
