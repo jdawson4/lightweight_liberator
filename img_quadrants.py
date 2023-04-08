@@ -14,19 +14,19 @@ from PIL import Image
 
 # walk through the files:
 list_of_files = {}
-for (dirpath, dirnames, filenames) in os.walk('quadrants'):
+for dirpath, dirnames, filenames in os.walk("quadrants"):
     for filename in filenames:
-        if filename.endswith('.png'):
+        if filename.endswith(".png"):
             list_of_files[filename] = os.sep.join([dirpath, filename])
 
 # only select 4 of them:
 imagePaths = []
 i = 0
-for k,v in list_of_files.items():
-    i+=1
+for k, v in list_of_files.items():
+    i += 1
     imagePaths.append(v)
-    print("Reading "+v)
-    if i==4:
+    print("Reading " + v)
+    if i == 4:
         break
 
 # find the smallest axis. We'll crop each image to be a perfect square based
@@ -51,10 +51,10 @@ img3 = images[2].crop((0, 0, smallest, smallest))
 img4 = images[3].crop((0, 0, smallest, smallest))
 
 # make the new image and add our current images to it
-new_im = Image.new('RGB', (smallest*2, smallest*2))
-new_im.paste(img1, (0,0))
-new_im.paste(img2, (smallest,0))
-new_im.paste(img3, (0,smallest))
-new_im.paste(img4, (smallest,smallest))
+new_im = Image.new("RGB", (smallest * 2, smallest * 2))
+new_im.paste(img1, (0, 0))
+new_im.paste(img2, (smallest, 0))
+new_im.paste(img3, (0, smallest))
+new_im.paste(img4, (smallest, smallest))
 
-new_im.save('quadrants.png')
+new_im.save("quadrants.png")
